@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using WPfExample.Models;
+using WPFExample_NetcoreDI.Models;
 
-namespace WPfExample.Data
+namespace WPFExample_NetcoreDI.Data
 {
     public class InMemoryOptions
     {

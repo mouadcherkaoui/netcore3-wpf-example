@@ -1,0 +1,21 @@
+﻿<Page x:Class="WPFExample_NetcoreDI.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFExample_NetcoreDI.Views"
+      xmlns:viewmodels="clr-namespace:WPFExample_NetcoreDI.ViewModels"      
+      mc:Ignorable="d" Width="400"
+      Title="MainPage">
+    <Page.DataContext>
+        <viewmodels:MainPageViewModel></viewmodels:MainPageViewModel>
+    </Page.DataContext>
+    <StackPanel>
+        <TextBlock Text="Message To Show"></TextBlock>
+        <TextBox Text="{Binding Message}"></TextBox>
+        <Button Command="{Binding ShowDialogCommand}" CommandParameter="{Binding Message}">
+            <Button.Content>ShowDialog</Button.Content>
+        </Button>
+
+    </StackPanel>
+</Page>

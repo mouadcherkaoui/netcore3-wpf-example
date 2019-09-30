@@ -7,13 +7,13 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using WPfExample.Data;
-using WPfExample.ViewModels;
-using WPfExample.Views;
+using WPFExample_NetcoreDI.Data;
+using WPFExample_NetcoreDI.ViewModels;
+using WPFExample_NetcoreDI.Views;
 using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.EntityFrameworkCore;
 
-namespace WPfExample
+namespace WPFExample_NetcoreDI
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -44,6 +44,12 @@ namespace WPfExample
                 
                 s.AddScoped<MainWindow>();
                 s.AddScoped<MainWindowViewModel>();
+
+                s.AddScoped<MainPage>();
+                s.AddScoped<MainPageViewModel>();
+
+                s.AddScoped<MemberListView>();
+                s.AddScoped<MemberListViewModel>();
             })
             .BuildContainer(); 
 

@@ -1,47 +1,47 @@
-
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
-using WPfExample.Data;
-using WPfExample.Models;
+using System.Windows.Navigation;
+using WPFExample_NetcoreDI;
+using WPFExample_NetcoreDI.Views;
 
-namespace WPfExample.ViewModels
+namespace WPFExample_NetcoreDI.ViewModels
 {
     public class MainWindowViewModel: ObservableObject
     {
-        IContext<InMemoryOptions> context;
+        NavigationService navigationService;
+        Dictionary<string, Type> Pages;
         public MainWindowViewModel()
         {
-            context = IoC.Container.GetRequiredService<IContext<InMemoryOptions>>();
-
-            Groups = context
-                .Set<Group>()
-                .ToList()
-                .PipeTo(g => new ObservableCollection<Group>(g));            
-
-            ShowDialogCommand = new RelayCommand<string>(execute: s =>
+            this.NavigationFrame = new Frame();
+            this.navigationService = NavigationFrame.NavigationService;
+            this.NavigateCommand = new RelayCommand<string>(Navigate);
+            this.Pages = new Dictionary<string, Type>()
             {
-                MessageBox.Show(s);
-            }, canExecute: s => true);
+                { "MainPage", typeof(MainPage) },
+                { "MemberList", typeof(MemberListView) }
+            };
         }
 
-
-        public ObservableCollection<Group> Groups { get; set; }
-
-
-        private string message;
-        public string Message 
-        { 
-            get => message; 
-            set=> Set(nameof(Message), ref message, value); 
+        private void Navigate(string page)
+        {
+            Type pageType;
+            if (this.Pages.TryGetValue(page, out pageType))
+            {
+                var pageInstance = IoC.Container.GetRequiredService(pageType);
+                this.navigationService.Navigate(pageInstance);
+            }
         }
-        public ICommand ShowDialogCommand { get; } 
+
+        public ICommand NavigateCommand { get; } 
+
+        public Frame NavigationFrame { get; }
+
     }
 }
-	

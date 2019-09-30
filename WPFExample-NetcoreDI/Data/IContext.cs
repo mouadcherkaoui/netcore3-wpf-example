@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-namespace WPfExample.Data
+namespace WPFExample_NetcoreDI.Data
 {
     public interface IContext<TOptions>
         //where TOptions: IOptions<TOptions>

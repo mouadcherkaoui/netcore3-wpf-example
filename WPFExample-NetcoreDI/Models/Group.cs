@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WPfExample.Models
+namespace WPFExample_NetcoreDI.Models
 {
     public class Group
     {

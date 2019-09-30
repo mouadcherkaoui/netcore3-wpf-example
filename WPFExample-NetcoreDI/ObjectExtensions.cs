@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WPfExample
+namespace WPFExample_NetcoreDI
 {
     public static class ObjectExtensions
     {

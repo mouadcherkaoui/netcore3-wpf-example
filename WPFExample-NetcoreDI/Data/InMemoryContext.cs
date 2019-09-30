@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPfExample.Models;
+using WPFExample_NetcoreDI.Models;
 
-namespace WPfExample.Data
+namespace WPFExample_NetcoreDI.Data
 {
     public class InMemoryContext : DbContext, IContext<InMemoryOptions>
     {
